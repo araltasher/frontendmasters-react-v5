@@ -1,0 +1,27 @@
+{
+  "name": "frontendmaster-react-v5",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "format": "prettier \"src/**/*.{js,html}\" --write",
+    "lint": "eslint \"src/**/*.{js,jsx}\" --quiet",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/araltasher/frontendmasters-react-v5.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/araltasher/frontendmasters-react-v5/issues"
+  },
+  "homepage": "https://github.com/araltasher/frontendmasters-react-v5#readme",
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.10.1",
+    "prettier": "^2.0.4"
+  }
+}
