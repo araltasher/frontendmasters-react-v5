@@ -1,14 +1,20 @@
-import React, { useState, useEffect, useContext } from "react";
-import pet, { ANIMALS } from "@frontendmasters/pet";
+import React, {
+  useState,
+  useEffect,
+  useContext,
+  FunctionComponent
+} from "react";
+import { RouteComponentProps } from "@reach/router";
+import pet, { ANIMALS, Animal } from "@frontendmasters/pet";
 import useDropdown from "./useDropdown";
 import Results from "./Results";
 import ThemeContext from "./ThemeContext";
 
-const SearchParams = () => {
+const SearchParams: FunctionComponent<RouteComponentProps> = () => {
   const [theme, setTheme] = useContext(ThemeContext);
   const [location, updateLocation] = useState("Seattle, WA");
-  const [breeds, updateBreeds] = useState([]);
-  const [pets, setPets] = useState([]);
+  const [breeds, updateBreeds] = useState([] as string[]);
+  const [pets, setPets] = useState([] as Animal[]);
   const [animal, AnimalDropdown] = useDropdown("Animal", "dog", ANIMALS);
   const [breed, BreedDropdown, updateBreed] = useDropdown("Breed", "", breeds);
 
@@ -16,8 +22,10 @@ const SearchParams = () => {
     const { animals } = await pet.animals({
       location,
       breed,
-      type: animal,
+      type: animal
     });
+
+    console.log("animals", animals);
 
     setPets(animals || []);
   }
@@ -35,7 +43,7 @@ const SearchParams = () => {
   return (
     <div className="search-params">
       <form
-        onSubmit={(e) => {
+        onSubmit={e => {
           e.preventDefault();
           requestPets();
         }}
@@ -46,7 +54,7 @@ const SearchParams = () => {
             id="location"
             value={location}
             placeholder="Location"
-            onChange={(e) => updateLocation(e.target.value)}
+            onChange={e => updateLocation(e.target.value)}
           />
         </label>
         <AnimalDropdown />
@@ -55,8 +63,8 @@ const SearchParams = () => {
           Theme
           <select
             value={theme}
-            onChange={(e) => setTheme(e.target.value)}
-            onBlur={(e) => setTheme(e.target.value)}
+            onChange={e => setTheme(e.target.value)}
+            onBlur={e => setTheme(e.target.value)}
           >
             <option value="peru">Peru</option>
             <option value="darkblue">Dark Blue</option>
